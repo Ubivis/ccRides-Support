@@ -1,0 +1,259 @@
+#No touchey
+messagesVersion: 15
+
+#Added to the start of most messages
+Prefix: "&b&lccRides &1» "
+
+#Ride Messages
+Ride:
+  queue:
+    joined: "&9Du bist der Warteschlange von {ride} beigetreten. &b{place} &9Spieler sind vor dir.\n&9Benutze &7/ride lq&9 um die Warteschlange zu verlassen."
+    joinedFast: "&9Du bist der Express-Warteschlange von {ride} beigetreten. &b{place} &9Spieler sind vor dir.\n&9Benutze &7/ride lq&9 um die Warteschlange zu verlassen."
+    already: "&9Du bist bereits in der Warteschlange. \n&9Du bist auf Platz &b{place} von {total}."
+    alreadyOther: "&9Du stehst bereits für {ride} an. \n&9Benutze &7/ride lq &9um die Warteschlange zu verlassen."
+    onRide: "&9Du kannst keiner Warteschlange beitreten, während du auf einer Fahrt bist. \n&9Benutze &7/ride exit&9 um die Fahrt zu verlassen."
+    left: "&9Du hast die Warteschlange von {ride} verlassen."
+  cantAfford: "&cDu hast nicht genug &6Tokens&c für diese Fahrt! \n&cKomm zurück, wenn du mindestens &6{price} Tokens&c hast."
+  paid: "&9Du hast &6{price} Tokens&9 bezahlt, um mit {ride} zu fahren."
+  noPermission: "&cDu hast keine Berechtigung für diese Fahrt! :("
+  seatTaken: "&cDieser Sitz ist bereits belegt!"
+  full: "&cDie Fahrt ist voll, bitte warte bis sie beendet ist, bevor du beitrittst."
+  running: "&cDie Fahrt läuft bereits, bitte warte bis sie beendet ist, bevor du beitrittst."
+  starting:
+    needMoreRiders: "&9Warten auf {count} weitere Spieler, um zu starten."
+    countdown: "&9Die Fahrt beginnt in {time} Sekunden."
+    seatsFull: "&9Alle Sitze sind belegt! Fahrt startet."
+  Jets:
+    controlMessage: "&b&lJets &1&l» &b&lSteuere die Höhe mit dem Mausrad."
+
+#Messages used for PlaceholderAPI messages
+Placeholder:
+  enabled: "Aktiviert"
+  disabled: "Deaktiviert"
+  waiting: "Wartend"
+  startingSoon: "Startet gleich"
+  running: "In Betrieb"
+  rideNotExist: "Fehler: RideID {RIDE} existiert nicht."
+  unlimitedPasses: "Unbegrenzt"
+
+#Command Messages
+Command:
+  #general command messages
+  notPlayer: "&cDieser Befehl muss von einem Spieler ausgeführt werden."
+  notEnabled: "&cRide-Befehle sind deaktiviert!"
+  noPermission: "&cDu hast keine Berechtigung dafür!"
+  listRides: "&9Verfügbare Fahrten sind: \n{ridelist}"
+  rideNotExist: "&cDiese Fahrt existiert nicht."
+  playerNotExist: "&cKonnte keinen Spieler mit diesem Namen finden. Ist er online?"
+
+  #player command messages
+  Player:
+    help:  "&1&m–------–––&b ccRides Hilfe: &1&m––------––\n
+            &7/ride &8[&7name&8]&9 - Eine Fahrt benutzen\n
+            &7/ride exit&9 - Eine Fahrt vor dem Ende verlassen\n
+            &7/ride lq&9 - Eine Fahrt-Warteschlange verlassen\n
+            &7/ride list&9 - Eine Liste aller Fahrten anzeigen\n
+            &7/ride help&9 - Diese Hilfe anzeigen\n
+            &1&m------------------------------------------"
+    exit:
+      main: "&9Du hast {ride} verlassen"
+      notRiding: "&9Du bist auf keiner Fahrt."
+    leaveQueue:
+      main: "&9Du hast die Warteschlange für {ride} verlassen"
+      notQueing: "&9Du stehst in keiner Warteschlange"
+
+  #admin command messages
+  Admin:
+    help: "&4&m–––----–&c ccRides Admin Hilfe: &4&m––----––\n
+          &cAliases: &7/rideadmin /rideadm\n
+          &7/rideadm help &c- Hilfe anzeigen\n
+          &7/rideadm reload &8<&7all&8|&7rideName&8> &c- Eine Fahrt oder alles neu laden\n
+          &7/rideadm create &8<&7rideName&8> <&7rideType&8> &c- Eine neue Fahrt erstellen\n
+          &7/rideadm delete &8<&7rideName&8> &c- Eine Fahrt löschen\n
+          &7/rideadm linksign &8<&7rideName&8> &c- Ein Schild mit einer Fahrt verknüpfen\n
+          &7/rideadm unlinksign &c- Die Verknüpfung eines Schilds mit einer Fahrt aufheben\n
+          &7/rideadm list &c- Eine Liste aller Fahrten anzeigen\n
+          &7/rideadm &8<&7name&8> <&7info&8|&7reload&8|&7enable&8|&7disable&8>\n
+          &7/rideadm &8<&7name&8> &7setting &8<&7key&8> <&7value&8> &c- Fahrt-Einstellungen ändern.\n
+          &7/rideadm &8<&7name&8> &7ejectPlayer &8<&7rider&8> &c- Einen Fahrer herauswerfen.\n
+      &4&m------------------------------------------------"
+    forceRide:
+      all: "&9Alle Spieler fahren jetzt mit {ride}."
+      single: "&9{player} wird gezwungen, mit {ride} zu fahren."
+    reload:
+      all: "&9Plugin wird neu geladen"
+      ride:  "&9Fahrt {ride} wird neu geladen"
+    createRide:
+      main: "&9Neue Fahrt erstellt: {ride} Typ: {type}"
+      exists: "&c{ride} existiert bereits"
+      syntax: "&cFehlende/Falsche Argumente! \n
+              &cVerwendung &7/rideadm create <name> <type>\n
+              &cVerfügbare Fahrttypen: {types}"
+    deleteRide:
+      main: "&9Fahrt {ride} gelöscht"
+      syntax: "&cFehlende Argumente! \n
+              &cVerwendung &7/rideadm delete <name>"
+    Ride:
+      enable:
+        main: "&9{ride} wurde aktiviert"
+        fail: "&c{ride} konnte nicht aktiviert werden. \n
+              &cBitte überprüfe, ob alle Einstellungen korrekt sind."
+      disable: "&9{ride} wurde deaktiviert"
+      start: "&9{ride} wurde gestartet"
+      stop: "&9{ride} wurde gestoppt"
+      error:
+        alreadyRunning: "&4Fehler: &c{ride} ist bereits gestartet"
+        notRunning: "&4Fehler: &c{ride} läuft nicht."
+        isDisabled: "&4Fehler: &c{ride} ist deaktiviert."
+      info:
+        status: "&4&m                         &c&l ccRides: Fahrt-Info &4&m                       \n
+          &cRide ID: {ID} &8// &cRide Type: {TYPE}\n
+          &4----------- &cFahrt-Status-Info &4-----------\n
+          &9Enabled: &b{ENABLED} &8// &9Running: &b{RUNNING} &8// &9Price: &b{PRICE}\n
+          &9Current Riders/Capacity: &b{RIDER_COUNT}&7/&b{CAPACITY} &8// &9Queue Size: &b{QUEUE_COUNT}\n
+          &9Base Location: &b{BASE_LOCATION}\n"
+        startEnd: "&4        --------- &cFahrt-Betriebsinfo &4---------\n
+          &9&lAuto Start: &b{AUTO_START} &8» &b{START_PLAYERS} &9Spieler, &b{START_DELAY} Sekunden\n
+          &9Join After Start: &b{JOIN_AFTER_START} &8// &9Join By Cart: &b{JOIN_BY_CART}\n
+          &9Exit Teleport: &b{EXIT_TELEPORT} &8// &9Lock in cart: &b{LOCK_IN_CART}\n
+          &9Exit Location: &b{EXIT_LOCATION}\n"
+        customModel: "&9Seats: &b{SEAT_TYPE} &9(Model Settings: &b{CUSTOM_MODEL_MATERIAL}&9, Data: &b{CUSTOM_MODEL_DATA}&9)\n"
+        seatCustomName: "Benutzerdefiniertes Modell"
+        carousel: "&4        -------- &cCAROUSEL Spezifische Info &4--------\n
+          &9Radius: &b{RADIUS} &8// &9Height Variation: &b±{HEIGHT_VAR} Blöcke\n
+          &9Rotate Speed: &b{ROTATE_SPEED} Ticks/Rotation &8// &9Ride Length &b{RIDE_LENGTH} Rotationen\n
+          &9Acceleration length: &b{ACCELERATE_LENGTH} &8// &9Height Speed: &b{HEIGHT_SPEED} &9Zyklen/Rotation\n
+          &9Poles, Item: &b{SHOW_ITEM_POLES} &9Lead: &b{SHOW_LEAD_POLES} &8// &9Pole Height: &b±{POLE_HEIGHT}\n
+          &9Pole Items: Material: &b{POLE_MATERIAL}&9, Model Data: &b{POLE_MODEL_DATA}&9, Number: &b{POLE_ENTITIES}\n
+          &4&m                                                                             "
+        ferrisWheel: "&4        ------ &cFERRIS_WHEEL Spezifische Info &4------\n
+          &9Radius: &b{RADIUS} &8// &9Cart Width: &b{CART_WIDTH}\n
+          &9Axis: &b{AXIS} &9(false = xy, true=zy) &8// &9Ride Length &b{RIDE_LENGTH} Rotationen\n
+          &9Rotate Speed: &b{ROTATE_SPEED} Ticks/Rotation\n
+          &4&m                                                                             "
+        chairswing: "&4        ------- &cCHAIRSWING Spezifische Info &4-------\n
+          &9Radius: &b{RADIUS} &8// &9Chain Height: &b{CHAIN_HEIGHT} Blöcke &8// &9Max Swing: &b{MAX_SWING_ANGLE} Grad\n
+          &9Rotate Speed: &b{ROTATE_SPEED} Ticks/Rotation &8// &9Ride Length &b{RIDE_LENGTH} Rotationen\n
+          &9Accelerate Length: &b{ACCELERATE_LENGTH} Rotationen\n
+          &9Chains, Item: &b{SHOW_ITEM_CHAINS} &9Leads: &b{SHOW_LEAD_CHAINS}\n
+          &9Chain Item: Material &b{CHAIN_MATERIAL} &9Number: &b{CHAIN_ENTITIES} Model Data: &b{CHAIN_CUSTOM_MODEL_DATA}\n
+          &4&m                                                                             "
+        jets: "&4         --------- &cJETS Spezifische Info &4---------\n
+          &9Arm Length: &b{ARM_LENGTH} &8// &9Center Radius: &b{CENTER_RADIUS} &8// &9Max Angle: &b{ANGLE_MAX}\n
+          &9Rotate Speed: &b{ROTATE_SPEED} Ticks/Rotation &8// &9Ride Length &b{RIDE_LENGTH} Rotationen\n
+          &9Accelerate Length: &b{ACCELERATE_LENGTH} Rotationen &8// &9Angle Step: &b{ANGLE_STEP} Grad\n
+          &9Arms: Leads: &b{SHOW_LEAD_ARMS} &9Item: &b{SHOW_ITEM_ARMS}\n
+          &9Arm Items: Material: &b{ARM_MATERIAL} &9Model Data: &b{ARM_MODEL_DATA} &9Entity Number: &b{ARM_ENTITIES}\n
+          &9Banners: &b{SHOW_BANNERS} &9Items: &oOdd &b{DECOR_MATERIAL_ODD} &9&oEven &b{DECOR_MATERIAL_EVEN}\n
+          &4&m                                                                             "
+        dropTower: "&4        -------- &cDROP_TOWER Spezifische Info &4--------\n
+          &9Ring Mode: &b{RING} &8// &9AXIS: &b{AXIS} &8// &9Radius: &b{RADIUS} Blöcke\n
+          &9Height: &b{LIFT_HEIGHT} &8// &9Lean: &b{LEAN_ANGLE}° &8// &9Brake Height: &b{BRAKE_HEIGHT}\n
+          &9Fall Acceleration: &b{FALL_ACCELERATION} Blöcke/Tick² &8// &9Max Fall Step: &b{MAX_FALL_STEP} Blöcke/Tick\n
+          &9Ride Sequence: &b{SEQUENCE}\n
+          &4&m                                                                             "
+        teacups: "&4        -------- &cTEACUPS Spezifische Info &4--------\n
+          &9Main Radius: &b{MAIN_RADIUS} Blöcke &8// &9Sub Radius: &b{SUB_RADIUS} Blöcke &8// &9Sub Count: &b{SUB_SEATS} Ringe\n
+          &9Main Rotate Speed: &b{MAIN_ROTATE_SPEED} Tick/Rotation &8// &9Sub Rotate Speed: &b{SUB_ROTATE_SPEED} Tick/Rotation\n
+          &9Acceleration length: &b{ACCELERATE_LENGTH} &8// &9Ride Length: &b{RIDE_LENGTH} &9Zyklen\n
+          &4&m                                                                             "
+        pendulum: "&4        -------- &cPENDULUM Spezifische Info &4--------\n
+          &9Arm Length: &b{ARM_LENGTH} Blöcke &8// &9Axis: &b{AXIS} &8// &9Radius: &b{RADIUS} Blöcke\n
+          &9Rotate Seats: &b{ROTATE_SEATS} &8// &9Rotate Time &b{ROTATE_TIME} \n
+          &9Swing Acceleration: &b{SWING_ACCELERATION} &8// &9Friction: &b{SWING_FRICTION} &8// &9Gravity &b{SWING_GRAVITY} \n
+          &9Powered Swings: &b{POWERED_SWINGS} &8// &9Show Arm: &b{SHOW_ARM} &8// &9Arm Entities: &b{ARM_ENTITIES} \n
+          &9Arm Material: &b{ARM_MATERIAL} &8// &9Arm Custom Model Data: &b{ARM_CUSTOM_MODEL_DATA} \n
+          &4&m                                                                             "
+        swingShip: "&4        -------- &cSWING_SHIP Spezifische Info &4--------\n
+          &9Arm Length: &b{ARM_LENGTH} Blöcke &8// &9Axis: &b{AXIS} &8// &9Row Count: &b{ROW_COUNT} Sitze\n
+          &9Boat Length: &b{BOAT_LENGTH} Blöcke &8// &9Boat Arc: &b{BOAT_ARC} Grad \n
+          &9Seat Width: &b{SEAT_WIDTH} Blöcke\n
+          &9Swing Acceleration: &b{SWING_ACCELERATION} &8// &9Friction: &b{SWING_FRICTION} &8// &9Gravity &b{SWING_GRAVITY}\n
+          &9Powered Swings: &b{POWERED_SWINGS} &8// &9Show Arm: &b{SHOW_ARM} &8// &9Quad Arm: &b{QUAD_ARM}\n
+          &9Arm Entities: &b{ARM_ENTITIES} &8» &9Material: &b{ARM_MATERIAL} &8» &9Custom Model Data: &b{ARM_CUSTOM_MODEL_DATA}\n
+          &4&m                                                                             "
+        starFlyer: "&4        ------- &cSTAR_FLYER Spezifische Info &4-------\n
+          &9Radius: &b{RADIUS} Blöcke &8// &9Chain Height: &b{CHAIN_HEIGHT} &8// &9Seat Width: &b{SEAT_WIDTH}\n
+          &9Rotate Speed: &b{ROTATE_SPEED} Ticks &8// &9Maximum Swing: &b{MAX_SWING_ANGLE} Grad\n
+          &9Acceleration Length: &b{SPIN_ACCELERATE_LENGTH} &8// &9Deceleration Length: &b{SPIN_DECELERATE_LENGTH}\n
+          &9Height: &b{LIFT_HEIGHT} Blöcke &8// &9Times, Lift: &b{LIFT_TIME} &9Hold: &b{HOLD_TIME} &9Fall: &b{FALL_TIME} Ticks. \n
+          &9Show Arms: &b{SHOW_ARMS} &9Chains: &b{SHOW_CHAINS} &9Leads: &b{SHOW_LEADS} \n
+          &9Entities: Arm: &b{ARM_ENTITIES} &9Chain: &b{CHAIN_ENTITIES} &8// &9Model Data, Arm: &b{ARM_CUSTOM_MODEL_DATA} &9Chain: &b{CHAIN_CUSTOM_MODEL_DATA}\n
+          &4&m                                                                             "
+        enterprise: "&4        ------- &cENTERPRISE Spezifische Info &4-------\n
+        &9Axis: &b{AXIS} &9Flip: &b{FLIP} &8// &9Arm Length: &b{ARM_LENGTH} &9Radius: &b{RADIUS} Blöcke\n
+        &9Arm Angles, Min: &b{ARM_MIN_ANGLE}° &9Max: &b{ARM_MAX_ANGLE}° &8// &9Arm Speed: &b{ARM_ANGLE_SPEED}°/Tick\n
+        &9Rotate Acceleration: &b{ROTATE_ACCELERATION} &8// &9Rotate Time &b{ROTATE_TIME} Ticks/Rotation \n
+        &9Ride Sequence: &b{SEQUENCE}\n
+        &9Show Arms: &b{SHOW_ARM} &9(&b{ARM_ENTITIES} &9Entitäten, &b{ARM_MATERIAL} &9Model Data: &b{ARM_CUSTOM_MODEL_DATA}&9) \n
+        &9Show Spokes: &b{SHOW_SPOKES} &9(&b{SPOKES_ENTITIES} &9Entitäten, &b{SPOKES_MATERIAL} &9Model Data: &b{SPOKES_CUSTOM_MODEL_DATA}&9) \n
+        &4&m                                                                             "
+      setting:
+        list: "&9Verfügbare Einstellungen für diese Fahrt: \n{settings}"
+
+        GENERAL:
+          success:
+            default: "&9{OPTION} auf &b{VALUE} gesetzt"
+            degree: "&9{OPTION} auf &b{VALUE} Grad gesetzt"
+            blocks: "&9{OPTION} auf &b{VALUE} Blöcke gesetzt"
+            ticks: "&9{OPTION} auf &b{VALUE} Ticks gesetzt"
+            cycles: "&9{OPTION} auf &b{VALUE} Zyklen gesetzt"
+            axis:
+              true: "&9{OPTION} auf &b{VALUE}&9 gesetzt. Verwende z/y"
+              false: "&9{OPTION} auf &b{VALUE}&9 gesetzt. Verwende x/y"
+          fail:
+            notFound: "&4{OPTION} &cist keine gültige Option für diese Fahrt."
+            mustBeInt: "&4Ungültiger Wert.&c {OPTION} muss eine Ganzzahl sein"
+            mustBeIntBlocks: "&4Ungültiger Wert.&c {OPTION} muss eine ganzzahlige Anzahl von Blöcken sein"
+            mustBeIntTicks: "&4Ungültiger Wert: &c{OPTION} muss eine ganzzahlige Anzahl von Ticks sein (20 Ticks = 1 Sekunde)"
+            mustBeIntCycles: "&4Ungültiger Wert: &c{OPTION} muss eine ganzzahlige Anzahl von Zyklen sein"
+            mustBeBool: "&4Ungültiger Wert.&c {OPTION} muss true/false sein"
+            mustBeDoub: "&4Ungültiger Wert.&c {OPTION} muss eine Gleitkommazahl sein"
+            mustBeDoubDegrees: "&4Ungültiger Wert.&c {OPTION} muss eine Gleitkommazahl für Grad sein"
+            mustBeDoubBlocks: "&4Ungültiger Wert.&c {OPTION} muss eine Gleitkommazahl für Blöcke sein"
+            mustBeMaterial: "&4Ungültiger Wert.&c {OPTION} muss ein Spigot Material Typ sein"
+            mustBeEntityType: "&4Ungültiger Wert. &c{OPTION} muss ein gültiger Spigot Entity Typ sein."
+            mustBeSequenceList: "&4Ungültige Fahrtsequenz.\n
+            &c Format ist &7step1:time1,step2:time2,usw... z.B. &c3:250,4:200,0:0\n
+            &cZeit ist eine ganzzahlige Anzahl von Ticks, Step sollte eine Ganzzahl sein. \n
+            &cSiehe Ride Wiki: &bhttp://github.com/TheClowner/ccRides-Support/wiki"
+
+        LOCATION:
+          player: "&9{OPTION} auf &bdeine aktuelle Position gesetzt."
+          coords: "&9{OPTION} auf &bx{X} y{Y} z{Z} gesetzt"
+          fail: "&4Falscher Wert: &c {OPTION} Muss drei Gleitkommazahlen sein oder leer, um deine aktuelle Position zu verwenden."
+
+      invalidSub: "&cUnbekannter Unterbefehl, Optionen sind info, reload, enable, disable, setting."
+      linksign:
+        syntax: "&cBitte gib eine Fahrt an, mit der das Schild verknüpft werden soll\n
+                &cVerwendung: &7/rideadm linksign &8<&7rideName&8>"
+        click: "&9Bitte rechtsklicke auf das Schild, um es zu verknüpfen"
+        linked: "&9Schild ist jetzt mit {ride} verknüpft"
+      unlinksign:
+        click: "&9Bitte rechtsklicke auf das Schild, um die Verknüpfung aufzuheben"
+        unlinked: "&9Schild ist nicht mehr mit einer Fahrt verknüpft"
+      ejectPlayer:
+        success: "&9{player} wurde aus {ride} herausgeworfen."
+        noArgs: "&cBitte gib an, welcher Spieler aus {ride} herausgeworfen werden soll!"
+        notRiding: "&c{player} fährt nicht auf {ride}!"
+      enableAll: "&9Versuche, alle Fahrten zu aktivieren..."
+      disableAll: "&9Deaktiviere alle Fahrten..."
+
+  FastPass:
+    help: "&1&m–-----&b ccRides FastPass Hilfe: &1&m–---––\n
+           &7/fastpass bal&9- Siehe, wie viele Fast Passes du hast\n
+           &1&m------------------------------------------"
+    helpAdmin: "&1&m–-----&b ccRides FastPass Hilfe: &1&m–---––\n
+           &7/fastpass&9 - Siehe, wie viele Fast Passes du hast\n
+           &7/fastpass bal &8[&7player&8]&9 - Siehe, wie viele Passes ein Spieler hat\n
+           &7/fastpass set &8<&7player&8> <&7amount&8>&9 - Setze die Passes eines Spielers\n
+           &7/fastpass add &8<&7player&8> <&7amount&8>&9 - Füge mehr Passes hinzu\n
+           &7/fastpass take &8<&7player&8> <&7amount&8>&9 - Nimm Passes weg\n
+           &7/fastpass help&9 - Zeige diese Hilfe\n
+           &1&m------------------------------------------"
+    balanceOwn: "&9Du hast &b{bal} &9Fast Passes."
+    balanceOther: "&b{player} &9hat &b{bal} &9Fast Passes."
+    set: "&b{player} &9hat jetzt &b{bal} &9Fast Passes."
+    add: "&b{player} &9hat &b{amount} &9Fast Passes erhalten. Er hat jetzt &b{bal}"
+    take: "&b{player} &9hat &b{amount} &9Fast Passes verloren. Er hat jetzt &b{bal}"
+    notEnabled: "&cFastQueue-Funktionen sind nicht aktiviert."
